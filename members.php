@@ -9,20 +9,14 @@
 <body>
     <nav>
         <a href="index.php">Home</a>
+        <a href="dashboard.php">Dashboard</a>
         <a href="members.php">Members</a>
         <a href="add.php">Add Entry</a>
     </nav>
-
     <div class="container">
         <h1>Our Team</h1>
         <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Student ID</th>
-                    <th>Introduction</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Name</th><th>Student ID</th><th>Introduction</th></tr></thead>
             <tbody>
                 <tr><td>Kevicia</td><td>413855080</td><td><a href="413855080.html">View</a></td></tr>
                 <tr><td>Troya</td><td>413855460</td><td><a href="413855460.html">View</a></td></tr>
