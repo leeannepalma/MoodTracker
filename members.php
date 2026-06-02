@@ -20,15 +20,17 @@
                 <tr>
                     <th>Name</th>
                     <th>Student ID</th>
+                    <th>Introduction</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Member 1</td><td>B123456</td></tr>
-                <tr><td>Member 2</td><td>B123457</td></tr>
-                <tr><td>Member 3</td><td>B123458</td></tr>
-                <tr><td>Member 4</td><td>B123459</td></tr>
-                <tr><td>Member 5</td><td>B123460</td></tr>
-                <tr><td>Member 6</td><td>B123461</td></tr>
+                <tr><td>Kevicia</td><td>413855080</td><td><a href="413855080.html">View</a></td></tr>
+                <tr><td>Troya</td><td>413855460</td><td><a href="413855460.html">View</a></td></tr>
+                <tr><td>Tyrese</td><td>413855601</td><td><a href="413855601.html">View</a></td></tr>
+                <tr><td>Leeanne</td><td>414854033</td><td><a href="414854033.html">View</a></td></tr>
+                <tr><td>Lordwish</td><td>414854058</td><td><a href="414854058.html">View</a></td></tr>
+                <tr><td>Saelle</td><td>414854066</td><td><a href="414854066.html">View</a></td></tr>
+                <tr><td>Jonathan</td><td>414857044</td><td><a href="414857044.html">View</a></td></tr>
             </tbody>
         </table>
     </div>
