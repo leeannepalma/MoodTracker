@@ -1,7 +1,7 @@
 # User Guide
 
 ## Accessing the Application
-Open your browser and navigate to: http://<raspberry-pi-ip>/mood-tracker/index.php
+Open your browser and navigate to: 'http://<raspberry-pi-ip>/mood-tracker/index.php'
 
 ## Pages Overview
 
