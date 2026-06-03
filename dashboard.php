@@ -25,6 +25,152 @@ while ($row = mysqli_fetch_assoc($heatmap_query)) { $entry_data[$row['member_id'
     <meta charset="UTF-8">
     <title>MoodTracker - Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+            text-align: center;
+        }
+        .stat-card .stat-emoji { font-size: 40px; margin-bottom: 8px; }
+        .stat-card .stat-number { font-size: 36px; font-weight: 700; color: #6b3fa0; }
+        .stat-card .stat-label { font-size: 14px; color: #888; margin-top: 6px; }
+        .chart-container {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+            margin-bottom: 24px;
+        }
+        .chart-container h2 { font-size: 18px; color: #6b3fa0; margin-bottom: 20px; }
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            height: 200px;
+            padding: 10px 0;
+            border-bottom: 2px solid #ede8f5;
+        }
+        .bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+        }
+        .bar {
+            width: 100%;
+            max-width: 60px;
+            border-radius: 8px 8px 0 0;
+            min-height: 4px;
+        }
+        .bar-1 { background: linear-gradient(180deg, #ef5350, #c62828); }
+        .bar-2 { background: linear-gradient(180deg, #ffa726, #e65100); }
+        .bar-3 { background: linear-gradient(180deg, #ffee58, #f9a825); }
+        .bar-4 { background: linear-gradient(180deg, #9ccc65, #558b2f); }
+        .bar-5 { background: linear-gradient(180deg, #66bb6a, #2e7d32); }
+        .bar-label { margin-top: 10px; font-size: 13px; color: #666; text-align: center; }
+        .bar-count { font-size: 14px; font-weight: 700; color: #6b3fa0; margin-bottom: 6px; }
+        .heatmap-member {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #ede8f5;
+        }
+        .heatmap-member:last-child { border-bottom: none; }
+        .heatmap-name { font-size: 14px; font-weight: 600; color: #2d2d2d; margin-bottom: 8px; }
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            grid-auto-flow: column;
+            gap: 3px;
+        }
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 3px;
+            max-width: 18px;
+            max-height: 18px;
+        }
+        .heatmap-cell:hover {
+            transform: scale(1.3);
+            outline: 2px solid #6b3fa0;
+        }
+        .cell-empty { background-color: #ebedf0; }
+        .cell-mood-1 { background-color: #e53935; }
+        .cell-mood-2 { background-color: #fb8c00; }
+        .cell-mood-3 { background-color: #fdd835; }
+        .cell-mood-4 { background-color: #7cb342; }
+        .cell-mood-5 { background-color: #2e7d32; }
+        .heatmap-legend {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 20px;
+            justify-content: flex-end;
+        }
+        .heatmap-legend .heatmap-cell {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+        }
+        .legend-label { font-size: 12px; color: #888; margin: 0 4px; }
+        .mindfulness-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+            margin-bottom: 24px;
+        }
+        .mindfulness-section h2 { font-size: 18px; color: #6b3fa0; margin-bottom: 8px; }
+        .mindfulness-desc { font-size: 14px; color: #888; margin-bottom: 20px; }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(107,63,160,0.1);
+            background: #faf8ff;
+        }
+        .video-card iframe { width: 100%; height: 180px; border: none; }
+        .video-card .video-title {
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+        .recent-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(107,63,160,0.1);
+            margin-bottom: 24px;
+        }
+        .recent-section h2 { font-size: 18px; color: #6b3fa0; margin-bottom: 16px; }
+        .recent-entry {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #ede8f5;
+        }
+        .recent-entry:last-child { border-bottom: none; }
+        .recent-entry .entry-emoji { font-size: 28px; }
+        .recent-entry .entry-info { flex: 1; }
+        .recent-entry .entry-name { font-weight: 600; font-size: 14px; color: #2d2d2d; }
+        .recent-entry .entry-note { font-size: 13px; color: #888; margin-top: 2px; }
+        .recent-entry .entry-date { font-size: 12px; color: #aaa; }
+    </style>
 </head>
 <body>
     <nav>
