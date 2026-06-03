@@ -12,10 +12,19 @@ note. Over time, your entries become a meaningful journal that reflects your emo
 journey, helping you better understand yourself and your patterns.
 
 ## Features
-- Submit a daily mood rating (1–5) with a note
-- View all past mood entries
-- Edit or delete entries
-- Member introduction page
+- Welcome banner with daily motivational quotes
+- Mood of the Day display showing the team's current emotional state
+- Quick mood logging with emoji-based mood ratings (😢😕😐😊😁)
+- Color-coded mood badges for easy visual identification
+- Full CRUD — create, view, edit, and delete mood entries
+- Interactive Dashboard with:
+  - Total entries, members, and average mood stats
+  - Mood distribution bar chart
+  - GitHub-style mood activity heatmap for each member
+  - Mindfulness corner with embedded wellness videos
+- Recent entries feed
+- Member introduction pages
+- Responsive purple and white theme
 
 ## Tech Stack
 - Hardware: Raspberry Pi Zero 2W
