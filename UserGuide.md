@@ -4,7 +4,7 @@
 
 Open your browser and navigate to:
 
-http://<raspberry-pi-ip>/mood-tracker/index.php
+http://169.254.1.1/mood-tracker/index.php
 
 ## Pages Overview
 
